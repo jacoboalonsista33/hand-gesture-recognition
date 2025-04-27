@@ -9,7 +9,7 @@ It provides a complete pipeline — from data collection to model training and l
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 - `src/` — Source code:
   - `collect_images_ai.py` — Script to collect training images via webcam (optional, since dataset is already created and augmented in data.pickle).
