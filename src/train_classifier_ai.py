@@ -12,7 +12,7 @@ import numpy as np
 
 
 # Load data
-with open('data.pickle', 'rb') as f:
+with open('data/data.pickle', 'rb') as f:
     data_dict = pickle.load(f)
 
 data = np.asarray(data_dict['data'])
