@@ -1,7 +1,7 @@
 import os
 import cv2
 
-DATA_DIR = '/Users/jacobogalindosanz/Desktop/ANALYZING SOCIAL MEDIA/sign_language_project/data'
+DATA_DIR = './data'  #the folder containing all of our images organized into letter-named folders IS NOT IN THE REPOSITORY.
 
 for folder_name in os.listdir(DATA_DIR):
     folder_path = os.path.join(DATA_DIR, folder_name)

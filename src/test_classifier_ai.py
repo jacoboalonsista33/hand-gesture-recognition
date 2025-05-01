@@ -2,16 +2,16 @@ import pickle
 import cv2
 import mediapipe as mp
 import numpy as np
-import time
-
-# Load model and label encoder
+import pyttsx3
 from tensorflow.keras.models import load_model
 
-model = load_model('deep_model.keras')
+# Initialize text-to-speech engine
+engine = pyttsx3.init()
 
+# Load model and label encoder
+model = load_model('deep_model.keras')
 with open('label_encoder.pickle', 'rb') as f:
     le = pickle.load(f)
-
 
 # MediaPipe setup
 cap = cv2.VideoCapture(0)
@@ -61,7 +61,7 @@ while True:
             prediction = model.predict(input_data)
             predicted_character = le.inverse_transform([np.argmax(prediction)])[0]
 
-            # ✅ Only draw if prediction was made
+            # Draw bounding box and character
             x1 = int(min(x_) * W) - 10
             y1 = int(min(y_) * H) - 10
             x2 = int(max(x_) * W) + 10
@@ -84,19 +84,21 @@ while True:
 
     key = cv2.waitKey(1)
 
-    if key == ord('q'):
+    if key == ord('q'):  # Quit
         break
-    elif key == 13:
+    elif key == 13:  # Enter key
         if predicted_character:
             sentence += predicted_character
-    elif key == ord(' '):
+    elif key == ord(' '):  # Space key
         sentence += " "
-    elif key == 127:
+    elif key == 127:  # Delete key
         sentence = sentence[:-1]
-    elif key == ord('c'):
+    elif key == ord('c'):  # Clear sentence
         sentence = ""
+    elif key == ord('v'):  # Speak the whole sentence
+        if sentence.strip() != "":
+            engine.say(sentence)
+            engine.runAndWait()
 
 cap.release()
 cv2.destroyAllWindows()
-
-

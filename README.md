@@ -7,6 +7,9 @@ It provides a complete pipeline — from data collection to model training and l
 - Fully trainable neural network model
 - Live real-time gesture prediction using webcam
 
+This project includes a preprocessed dataset (data.pickle) containing hand landmark features and labels extracted from sign language images. The full raw image dataset used to generate this file is not included in the repository due to size constraints. 
+However, the code scripts for collecting, augmenting, and processing the raw images are provided only for reference in the src/ folder. 
+
 ---
 
 ## Project Structure

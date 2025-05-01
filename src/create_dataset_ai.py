@@ -9,7 +9,7 @@ hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
 #static_image_mode set to true means that we are processing photos, not videos.
 # The detecttion confidence accepts predicitions that have 30% confidence of being a hand.
 
-DATA_DIR = './data' #the folder  containing all of our images organized into letter-named folders
+DATA_DIR = './data' #the folder containing all of our images organized into letter-named folders IS NOT IN THE REPOSITORY.
 data = [] #will store the extracted hand landmark vectors
 labels = [] #will store the matchign letter for each vector (puede que ya no haga falta, ya que hemos cambiado los nombres de la carpeta con la terminal)
 
@@ -31,7 +31,7 @@ for dir_ in os.listdir(DATA_DIR): #ensures only valid folders are processed by f
         #If the image is broken or missing, skip it
         img = cv2.imread(os.path.join(folder_path, img_path))
         if img is None:
-            print(f"⚠️ Skipped unreadable image: {img_path} in {dir_}")
+            print(f" Skipped unreadable image: {img_path} in {dir_}")
             continue
 
         img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) #OpenCV loads images as BGR, but MediaPipe expects RGB
@@ -58,7 +58,7 @@ for dir_ in os.listdir(DATA_DIR): #ensures only valid folders are processed by f
             print(f"⚠️ No hand detected in: {img_path} in {dir_}")
 
 # Save final dataset to a file
-with open('jacobo_signs/data.pickle', 'wb') as f:
+with open('/Users/jacobogalindosanz/Desktop/hand-gesture-recognition/data.pickle', 'wb') as f:
     pickle.dump({'data': data, 'labels': labels}, f)
 
 print(f"Finished processing. Saved {len(data)} valid samples.")
