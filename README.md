@@ -55,10 +55,15 @@ python src/test_classifier_ai.py
 While testing with the webcam, use the following keyboard controls:
 
 Enter — Add the predicted letter to the sentence.
+
 Space — Add a space between words.
+
 Backspace — Delete the last character.
+
 C — Clear the full sentence.
+
 Q — Quit the webcam session.
+
 V - A voice reads the sentence you created outloud.
 
 The recognized text will be updated live on the video feed.
